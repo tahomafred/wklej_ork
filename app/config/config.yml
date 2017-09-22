@@ -67,3 +67,25 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+fos_rest:
+    routing_loader:
+        default_format: json                            # All responses should be JSON formated
+        include_format: false                           # We do not include format in request, so that all responses
+                                                        # will eventually be JSON formated
+    format_listener:
+        rules:
+            - { path: '^/', priorities: ['json'], fallback_format: json, prefer_extension: true }
+    view:
+        mime_types:
+            json: ['application/json', 'application/json;version=1.0', 'application/json;version=1.1', 'application/json;version=1.2']
+        view_response_listener: 'force'
+        formats:
+            json: true
+    allowed_methods_listener: true
+    access_denied_listener:
+        json: true
+    body_listener: true
+    exception:
+        messages:
+            AppBundle\Exceptions\BadRequestHttpException: true

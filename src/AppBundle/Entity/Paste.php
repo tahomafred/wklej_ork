@@ -28,6 +28,13 @@ class Paste
      */
     private $content;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string")
+     */
+    private $password;
+
 
     /**
      * Get id
@@ -62,5 +69,28 @@ class Paste
     {
         return $this->content;
     }
-}
 
+    /**
+     * Set password
+     *
+     * @param string $content
+     *
+     * @return Password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+}

@@ -79,14 +79,17 @@ class PasteController extends FOSRestController
      * @Route("/{id}")
      * @Method({"GET"})
      */
-    public function getPaste($id)
+    public function getPaste($id, Request $request)
     {
         $paste = $this->pasteRepository->find($id);
-
-        if(!$paste) {
+        $password = $request->get('password');
+        if(!$paste || $password !=== $paste->getPassword()) {
             throw new BadRequestHttpException('Paste not found!');
         }
-
         return new View($paste);
+
+
+
+
     }
 }

@@ -31,7 +31,7 @@ class Paste
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string")
+     * @ORM\Column(name="password", type="string", nullable="true")
      */
     private $password;
 

@@ -58,7 +58,7 @@ class PasteController extends FOSRestController
     public function createPaste(Request $request)
     {
         $content = $request->get('content');
-
+        $password = $request->get('password');
         if(!is_string($content) || strlen($content) <= 0)
         {
             throw new BadRequestHttpException('The paste cannot be empty!');
@@ -66,6 +66,7 @@ class PasteController extends FOSRestController
 
         $paste = new Paste();
         $paste->setContent($content);
+        $paste -> setPassword($password);
 
         $this->em->persist($paste);
         $this->em->flush();

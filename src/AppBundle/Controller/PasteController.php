@@ -77,7 +77,7 @@ class PasteController extends FOSRestController
 
     /**
      * @Route("/{id}")
-     * @Method({"GET"})
+     * @Method({"POST"})
      */
     public function getPaste($id, Request $request)
     {
